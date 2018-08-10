@@ -1,0 +1,14 @@
+{
+  "name": "mazes",
+  "version": "1.0.0",
+  "description": "Maze algorithms.",
+  "main": "binary_tree_demo.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Ivan Petrovic",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  }
+}
