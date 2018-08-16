@@ -1,7 +1,7 @@
 "use strict";
 
 const DistanceGrid = require('../core/distance_grid');
-const BinaryTree = require('./binary_tree');
+const BinaryTree = require('../algorithms/binary_tree');
 
 let grid = new DistanceGrid(5, 5);
 BinaryTree.on(grid);
@@ -13,5 +13,5 @@ grid.distances = distances;
 console.log(String(grid));
 
 grid.distances = distances.path_to(grid.cell_at(grid.rows - 1, 0));
-console.log("path from northwest corner to southwest corner:");
+console.log("\nPath from northwest corner to southwest corner:");
 console.log(String(grid));

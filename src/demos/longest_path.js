@@ -6,7 +6,7 @@ const BinaryTree = require('../algorithms/binary_tree');
 let grid = new DistanceGrid(5, 5);
 BinaryTree.on(grid);
 
-let start = grid.lookup(0, 0);
+let start = grid.cell_at(0, 0);
 let distances = start.distances();
 
 let new_start;
@@ -20,4 +20,3 @@ let new_distances = new_start.distances();
 
 grid.distances = new_distances.path_to(goal);
 console.log(String(grid));
-// new_start.print();

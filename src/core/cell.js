@@ -33,7 +33,7 @@ class Cell {
         return false;
     }
 
-    get linked() {
+    get linked_cells() {
         return Object.values(this.links);
     }
 
@@ -75,7 +75,7 @@ class Cell {
             let new_frontier = [];
             
             frontier.forEach(cell => {
-                cell.linked.forEach((linked_cell) => {
+                cell.linked_cells.forEach((linked_cell) => {
                     if (distances.exists(linked_cell)) return;
                     distances.store(linked_cell, distances.distance_of(cell) + 1);
                     new_frontier.push(linked_cell);

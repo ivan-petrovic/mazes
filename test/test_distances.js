@@ -1,6 +1,6 @@
 let assert = require('assert');
-const Cell = require('../cell');
-const Distances = require('../distances');
+const Distances = require('../src/core/distances');
+const Cell = require('../src/core/cell');
 
 let cell1, cell2, distances;
 

@@ -36,7 +36,7 @@ class Distances {
         breadcrumbs.store(current, this.distance_of(current));
 
         while(current !== this.root) {
-            for(const neighbor of current.linked) {
+            for(const neighbor of current.linked_cells) {
                 if (this.distance_of(neighbor) < this.distance_of(current)) {
                     breadcrumbs.store(neighbor, this.distance_of(neighbor));
                     current = neighbor;

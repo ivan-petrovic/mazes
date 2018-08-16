@@ -1,5 +1,5 @@
 let assert = require('assert');
-const Cell = require('../cell');
+const Cell = require('../src/core/cell');
 
 let cell1, cell2, cell3;
 
@@ -75,9 +75,9 @@ describe('Cell', function() {
         cell1.link(cell2);          // link cell1 to cell2, and vice versa
         cell1.link(cell3, false);   // link cell1 to cell3, but NOT vice versa
 
-        assert.equal(cell1.linked.length, 2);
-        assert.equal(cell2.linked.length, 1);
-        assert.equal(cell3.linked.length, 0);
+        assert.equal(cell1.linked_cells.length, 2);
+        assert.equal(cell2.linked_cells.length, 1);
+        assert.equal(cell3.linked_cells.length, 0);
     });
 
     it('#num_of_links should return number of linked cells', function() {

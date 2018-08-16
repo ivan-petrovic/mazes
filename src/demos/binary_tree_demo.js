@@ -1,6 +1,6 @@
 "use strict";
 
-const Grid = require('./grid');
+const Grid = require('../core/grid');
 const BinaryTree = require('../algorithms/binary_tree');
 
 let grid = new Grid(5, 5);
