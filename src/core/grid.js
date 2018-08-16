@@ -115,6 +115,14 @@ class Grid {
         return "   "; // <-- that's THREE (3) spaces!
     }
 
+    get deadends() {
+        let list = [];
+        this.for_each_cell((cell) => {
+            if (cell.num_of_links == 1) list.push(cell);
+        });
+        return list;
+    }
+
     print() {
         let cells = this.each_cell();
         let value, done;

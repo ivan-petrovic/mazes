@@ -146,4 +146,38 @@ describe('Cell', function() {
         assert.equal(cells.length, 2);
         assert.equal(cells.includes(cell3), false);
     });
+
+    it('#unvisited_neighbors should return list of unvisited neighbors', function() {
+        assert.equal(cell1.unvisited_neighbors.length, 0);  // cell1 does not have neighbors
+
+        // add two neighbors to cell1, each is unvisited
+        cell1.north = cell2;
+        cell1.east = cell3;
+        assert.equal(cell1.unvisited_neighbors.length, 2);
+        assert.equal(cell1.unvisited_neighbors.includes(cell2), true);
+        assert.equal(cell1.unvisited_neighbors.includes(cell3), true);
+
+        // make on of those neighbors visited (it has links to other cells)
+        cell2.link(cell1);
+        assert.equal(cell1.unvisited_neighbors.length, 1);
+        assert.equal(cell1.unvisited_neighbors.includes(cell2), false);
+        assert.equal(cell1.unvisited_neighbors.includes(cell3), true);
+    });
+
+    it('#visited_neighbors should return list of visited neighbors', function() {
+        assert.equal(cell1.visited_neighbors.length, 0);  // cell1 does not have neighbors
+
+        // add two neighbors to cell1, each is unvisited
+        cell1.north = cell2;
+        cell1.east = cell3;
+        assert.equal(cell1.visited_neighbors.length, 0);
+        assert.equal(cell1.visited_neighbors.includes(cell2), false);
+        assert.equal(cell1.visited_neighbors.includes(cell3), false);
+
+        // make on of those neighbors visited (it has links to other cells)
+        cell2.link(cell1);
+        assert.equal(cell1.visited_neighbors.length, 1);
+        assert.equal(cell1.visited_neighbors.includes(cell2), true);
+        assert.equal(cell1.visited_neighbors.includes(cell3), false);
+    });
 });

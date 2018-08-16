@@ -63,6 +63,14 @@ class Cell {
         return neighbors.length > 0 ? neighbors[random_index] : null;
     }
 
+    get unvisited_neighbors() {
+        return this.neighbors.filter((neighbor) => neighbor.empty_links );
+    }
+
+    get visited_neighbors() {
+        return this.neighbors.filter((neighbor) => neighbor.num_of_links > 0 );
+    } 
+
     print() {
         console.log('cell: (' + this.row + ', ' + this.column + ') ');
     }
