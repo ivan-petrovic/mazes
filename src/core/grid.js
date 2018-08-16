@@ -64,6 +64,24 @@ class Grid {
         }
     }
 
+    for_each_cell(func) {
+        let cells = this.each_cell();
+        let value, done;
+        
+        while({value, done} = cells.next(), !done) {
+            func(value);    // value is next cell in grid
+        }
+    }
+
+    for_each_row(func) {
+        let rows = this.each_row();
+        let value, done;
+        
+        while({value, done} = rows.next(), !done) {
+            func(value);    // value is next row in grid
+        }
+    }
+
     toString() {
         let output = "+" + "---+".repeat(this.columns) + "\n";
 

@@ -121,7 +121,29 @@ describe('Cell', function() {
         cell1.north = cell2;
         cell1.east = cell3;
         let neighbor = cell1.sample_neighbor;
-        assert.equal(neighbor == cell2 || neighbor == cell2, true);
+        assert.equal(neighbor == cell2 || neighbor == cell3, true);
     });
 
+    it('#equality of cell instances', function() {
+        cell1equal = new Cell(1, 2);
+        assert.equal(cell1 == cell1equal, false);
+        assert.equal(cell1 === cell1equal, false);
+    });
+
+    it('#cells in array', function() {
+        let cells = [cell1, cell3];
+        assert.equal(cells.length, 2);
+
+        assert.equal(cells.indexOf(cell3), 1);
+
+        assert.equal(cells.includes(cell1), true);
+        assert.equal(cells.includes(cell2), false);
+
+        cells.push(cell2);
+        assert.equal(cells.includes(cell2), true);
+
+        cells.splice(1,1);  // splice cell3
+        assert.equal(cells.length, 2);
+        assert.equal(cells.includes(cell3), false);
+    });
 });

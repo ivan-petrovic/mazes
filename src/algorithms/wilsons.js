@@ -4,59 +4,30 @@ class Wilsons {
 
     static on(grid) {
         let unvisited = [];
-        let unvisited_hashes = [];
-        let cells = grid.each_cell();
-        let value, done;
-        
-        while({value, done} = cells.next(), !done) {
-            let cell = value;
-            unvisited.push(cell);
-            unvisited_hashes.push(cell._hash());
-        }
+        grid.for_each_cell(cell => unvisited.push(cell));
 
-        // console.log(unvisited_hashes);
         let index = Math.floor(Math.random() * unvisited.length);
-        // console.log(unvisited_hashes[index]);
         unvisited.splice(index, 1);
-        unvisited_hashes.splice(index, 1);
-        // console.log(unvisited_hashes);
 
         while (unvisited.length > 0) {
-            // console.log("In while unvisited: " + unvisited_hashes);
             index = Math.floor(Math.random() * unvisited.length);
             let cell = unvisited[index];
-            // console.log("index: " + index);
-            // cell.print();
-            let path = [];
-            let path_hashes = [];
-            path.push(cell);
-            path_hashes.push(cell._hash());
-            // console.log("Path: " + path_hashes);
+            let path = [cell];
 
-            while (unvisited_hashes.includes(cell._hash())) {
+            while (unvisited.includes(cell)) {
                 cell = cell.sample_neighbor;
-                // console.log("Sample cell neighbor: " + cell._hash());
-                let position = path_hashes.indexOf(cell._hash());
+                let position = path.indexOf(cell);
                 if (position > -1) {
-                    path.splice(position+1);
-                    path_hashes.splice(position+1);
-                    // path.push(cell);
-                    // path_hashes.push(cell._hash());
-                    // console.log("Izbaci iz Path: " + path_hashes);
+                    path.splice(position + 1);
                 } else {
                     path.push(cell);
-                    path_hashes.push(cell._hash());
-                    // console.log("Dodaj u Path: " + path_hashes);
                 }
             }
 
-            // console.log("Out of while.");
             for (let index = 0; index < path.length - 1; index += 1) {
-            // for (let index = path.length - 2; index > 0; index -= 1) {
                 path[index].link(path[index + 1]);
-                let delIndex = unvisited_hashes.indexOf(path_hashes[index]);
+                let delIndex = unvisited.indexOf(path[index]);
                 unvisited.splice(delIndex, 1);
-                unvisited_hashes.splice(delIndex, 1);
             }
         }
 
@@ -67,6 +38,7 @@ class Wilsons {
 module.exports = Wilsons;
 
 // class Wilsons
+
 //     def self.on(grid)
 //         unvisited = []
 //         grid.each_cell { |cell| unvisited << cell }
