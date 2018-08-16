@@ -13,18 +13,9 @@ class BinaryTree {
             let index = Math.floor(Math.random() * neighbors.length);
             let neighbor = neighbors[index];
             if (neighbor) cell.link(neighbor);
-
-            /////////
-            console.log("Cell: " + cell.row + ", " + cell.column);
-            if(cell.north) console.log(" Neighbor at north: " + cell.north.row + ", " + cell.north.column); else console.log(" No north neighbor.");
-            if(cell.east) console.log(" Neighbor at east: " + cell.east.row + ", " + cell.east.column); else console.log(" No east neighbor.");
-            console.log(" Index: " + index);
-            if (neighbor) {
-                console.log("Linking cell (" + cell.row + ", " + cell.column + ") with (" + neighbor.row + ", " + neighbor.column + "): " + cell.isLinked(neighbor));
-            } else {
-                console.log(" No link.");
-            }
         }
+
+        return grid;
     }
 
     // def self.on(grid)
@@ -41,3 +32,13 @@ class BinaryTree {
 }
 
 module.exports = BinaryTree;
+
+// console.log("Cell: " + cell.row + ", " + cell.column);
+// if(cell.north) console.log(" Neighbor at north: " + cell.north.row + ", " + cell.north.column); else console.log(" No north neighbor.");
+// if(cell.east) console.log(" Neighbor at east: " + cell.east.row + ", " + cell.east.column); else console.log(" No east neighbor.");
+// console.log(" Index: " + index);
+// if (neighbor) {
+//     console.log("Linking cell (" + cell.row + ", " + cell.column + ") with (" + neighbor.row + ", " + neighbor.column + "): " + cell.isLinked(neighbor));
+// } else {
+//     console.log(" No link.");
+// }

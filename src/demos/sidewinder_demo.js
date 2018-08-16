@@ -1,7 +1,7 @@
 "use strict";
 
 const Grid = require('./grid');
-const Sidewinder = require('./sidewinder');
+const Sidewinder = require('../algorithms/sidewinder');
 
 let grid = new Grid(4, 4);
 Sidewinder.on(grid);

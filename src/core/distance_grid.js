@@ -10,7 +10,7 @@ class DistanceGrid extends Grid {
 
     contents_of(cell) {
         if (this.distances && this.distances.exists(cell)) {
-            return ("  " + this.distances.lookup(cell)).slice(-3);
+            return ("  " + this.distances.distance_of(cell)).slice(-3);
         } else {
             return super.contents_of(cell);
         }
