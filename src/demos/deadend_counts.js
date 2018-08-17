@@ -6,14 +6,16 @@ const Sidewinder = require('../algorithms/sidewinder');
 const AldousBroder = require('../algorithms/aldous_broder');
 const Wilsons = require('../algorithms/wilsons');
 const HuntAndKill = require('../algorithms/hunt_and_kill');
+const RecursiveBacktracker = require('../algorithms/recursive_backtracker');
 
-let algorithms = ['BinaryTree', 'Sidewinder', 'AldousBroder', 'Wilsons', 'HuntAndKill'];
+let algorithms = ['BinaryTree', 'Sidewinder', 'AldousBroder', 'Wilsons', 'HuntAndKill', 'RecursiveBacktracker'];
 let algorithmsClass = {
     'BinaryTree': BinaryTree,
     'Sidewinder': Sidewinder,
     'AldousBroder': AldousBroder,
     'Wilsons': Wilsons,
-    'HuntAndKill': HuntAndKill
+    'HuntAndKill': HuntAndKill,
+    'RecursiveBacktracker': RecursiveBacktracker
 };
 
 let tries = 100;
@@ -42,5 +44,5 @@ console.log(`\nAverage dead-ends per ${size}x${size} maze (${total_cells} cells)
 algorithms.sort((alg1, alg2) => { return averages[alg2] - averages[alg1] });
 algorithms.forEach((algorithm) => {
     let percentage = averages[algorithm] * 100.0 / total_cells;
-    console.log("%s : %d/%d (%d%%)", algorithm.padStart(14), Math.round(averages[algorithm]), total_cells, percentage);
+    console.log("%s: %d/%d (%d%%)", algorithm.padStart(20), Math.round(averages[algorithm]), total_cells, percentage);
 });

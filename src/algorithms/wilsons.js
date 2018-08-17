@@ -1,17 +1,20 @@
 "use strict";
 
+const select = require('../util/array_helper');
+
 class Wilsons {
 
     static on(grid) {
         let unvisited = [];
         grid.for_each_cell(cell => unvisited.push(cell));
 
-        let index = Math.floor(Math.random() * unvisited.length);
-        unvisited.splice(index, 1);
+        // let index = Math.floor(Math.random() * unvisited.length);
+        unvisited.splice(select.random_index_of(unvisited), 1);
 
         while (unvisited.length > 0) {
-            index = Math.floor(Math.random() * unvisited.length);
-            let cell = unvisited[index];
+            // index = Math.floor(Math.random() * unvisited.length);
+            // let cell = unvisited[index];
+            let cell = select.random_element_of(unvisited);
             let path = [cell];
 
             while (unvisited.includes(cell)) {

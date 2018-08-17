@@ -1,5 +1,7 @@
 "use strict";
 
+const select = require('../util/array_helper');
+
 class HuntAndKill {
     static on(grid) {
         let current = grid.random_cell;
@@ -8,8 +10,9 @@ class HuntAndKill {
             let unvisited_neighbors = current.unvisited_neighbors;
 
             if (unvisited_neighbors.length > 0) {
-                let index = Math.floor(Math.random() * unvisited_neighbors.length);
-                let neighbor = unvisited_neighbors[index];
+                // let index = Math.floor(Math.random() * unvisited_neighbors.length);
+                // let neighbor = unvisited_neighbors[index];
+                let neighbor = select.random_element_of(unvisited_neighbors);
                 current.link(neighbor);
                 current = neighbor;
             } else {
@@ -22,8 +25,9 @@ class HuntAndKill {
                     if (cell.empty_links && visited_neighbors.length > 0) {
                         current = cell;
 
-                        let index = Math.floor(Math.random() * visited_neighbors.length);
-                        let neighbor = visited_neighbors[index];
+                        // let index = Math.floor(Math.random() * visited_neighbors.length);
+                        // let neighbor = visited_neighbors[index];
+                        let neighbor = select.random_element_of(visited_neighbors);
                         current.link(neighbor);
 
                         done = true; // break

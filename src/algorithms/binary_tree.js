@@ -1,5 +1,7 @@
 "use strict";
 
+const select = require('../util/array_helper');
+
 class BinaryTree {
     
     static on(grid) {
@@ -7,8 +9,9 @@ class BinaryTree {
             let neighbors = [];
             if(cell.north) neighbors.push(cell.north);
             if(cell.east) neighbors.push(cell.east);
-            let index = Math.floor(Math.random() * neighbors.length);
-            let neighbor = neighbors[index];
+            // let index = Math.floor(Math.random() * neighbors.length);
+            // let neighbor = neighbors[index];
+            let neighbor = select.random_element_of(neighbors);
             if (neighbor) cell.link(neighbor);
         });
 
